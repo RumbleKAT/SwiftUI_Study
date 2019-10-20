@@ -11,19 +11,26 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let Students = ["Harry", "Hermione","Ron"]
-    @State private var selectedStudent = "Harry"
+    @State private var checkAmount = ""
+    @State private var numberOfPeople = 2
+    @State private var tipPercentage = 2
+    
+    let tipPercentages = [10,15,20,25,0]
+    
     
     var body: some View{
-        
-        VStack{
-            Picker("Select your student", selection: $selectedStudent){
-                ForEach(0 ..< Students.count){
-                    Text(self.Students[$0])
-                }
+        Form{
+            Section{
+                TextField("Amount",text: $checkAmount)
+                    .keyboardType(.decimalPad)
+                
+                //keyboardType은 가상머신에서 직접 입력가능 -> Preview에선 불가함
+            }
+            
+            Section{
+                Text("$\(checkAmount)")
             }
         }
-        
     }
     
 }
