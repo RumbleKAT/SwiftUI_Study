@@ -10,13 +10,20 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var name = ""
     
-    var body: some View {
-        Form{
-            TextField("Enter  your name",text: $name)
-            Text("Your name is \(name)")// 2 way binding dosen't needed
+    let Students = ["Harry", "Hermione","Ron"]
+    @State private var selectedStudent = "Harry"
+    
+    var body: some View{
+        
+        VStack{
+            Picker("Select your student", selection: $selectedStudent){
+                ForEach(0 ..< Students.count){
+                    Text(self.Students[$0])
+                }
+            }
         }
+        
     }
     
 }
