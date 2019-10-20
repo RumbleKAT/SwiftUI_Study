@@ -10,9 +10,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+        NavigationView{
+            Form{ //one row to 10 row
+                Section{
+                    Text("Hello World")
+                }
+            }
+            .navigationBarTitle(Text("SwiftUI"),displayMode: .inline)
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
