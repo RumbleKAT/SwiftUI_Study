@@ -19,17 +19,23 @@ struct ContentView: View {
     
     
     var body: some View{
-        Form{
-            Section{
-                TextField("Amount",text: $checkAmount)
-                    .keyboardType(.decimalPad)
+        NavigationView{
+            Form{
+                Section{
+                    TextField("Amount",text: $checkAmount)
+                        .keyboardType(.decimalPad)
+                    //Navagation View가 있어야 10개 이상의 셀렉션 데이터를 볼수 있음
+                    Picker("Number of people",selection: $numberOfPeople){
+                        ForEach(2 ..< 100){
+                            Text("\($0) people")
+                        }
+                    }
+                }
                 
-                //keyboardType은 가상머신에서 직접 입력가능 -> Preview에선 불가함
-            }
-            
-            Section{
-                Text("$\(checkAmount)")
-            }
+                Section{
+                    Text("$\(checkAmount)")
+                }
+            }.navigationBarTitle("We Split", displayMode: .inline)
         }
     }
     
